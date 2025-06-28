@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated-Book Publishing</title>
+    
+    <script src="/static/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Slabo+27px&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">
+    </script>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <!-- <center><h1 class="heading-intro">Welcome to TAYAPRO PUBLISHING</h1></center> -->
+    <div class="mainDiv {%if font %}{{font}}{% endif %}" >
+        
+    <div class="input-div">
+    
+    <center style="margin: 2%; color: #002C54;"><p>Write Your Own Book in minutes!</p></center>
+
+    <form method="POST">
+        <!-- <label for="bookname">Enter the Book title:</label> -->
+        <input type="text" id="name" name="bookname" placeholder="Enter the Book title here!" required><br>
+        <input type="text" id="desc" name="description" placeholder="Description of the book here!" required><br>
+
+        <input type="number" id="noOfChapters" name="noOfChapters" placeholder="Enter the total Number of Chapters!" required><br>
+
+        <input type="number" id="noOfwords" name="noOfwords" placeholder="Enter the total Number of Words!" required><br>
+
+        <input type="text" id="authorName" name="authorName" placeholder="Write Author's Name here" required><br>
+
+        <select style="font-size: 12px;" class="custom-select" name="font" id="font" required>
+            <option value="" class="option">Select text style for your book!</option>
+            <option value="Roboto" class="option">Roboto</option>
+            <option value="OpenSans" class="option">Open Sans</option>
+            <option value="Lato" class="option">Lato</option>
+            <option value="Slabo27px" class="option">Slabo 27px</option>
+            <option value="PoetsenOne" class="option">Poetsen One</option>
+        </select>
+        <!-- ["Roboto","Open Sans","Lato","Slabo 27px","Oswald","Roboto Condensed","Source Sans Pro"] -->
+
+        <button class="btn button-19" type="submit">Submit</button>
+    </form>
+    <!-- <button id="downloadBtn" class="button-56" onclick="generatePDF();">Download PDF</button> -->
+    <!-- <button  id="downloadBtn" class="btn" onclick="generatePDF();">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>HOVER ME</span>
+      </button> -->
+
+
+
+      <!-- <div class="container2">
+        <div class="center">
+          <button class="btn" id="downloadBtn" onclick="generatePDF();">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>Download PDF</span>
+          </button>
+        </div>
+      </div> -->
+      <button class="button-19 bttn" onclick="generatePDF()">Download PDF</button>
+      <button class="button-19" onclick="exportHTML();">Download Word</button>
+      <!-- <div class="container3">
+        <div class="center">
+          <button class="btn" id="downloadBtn" onclick="exportHTML();">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>Download Word</span>
+          </button>
+        </div>
+      </div> -->
+</div>
+
+    <!-- {% if book %}
+        <p>{{ book }}</p>
+    {% endif %} -->
+    <div class="book-page">
+    <script>
+        let pages = []
+    </script>
+    <div id="book-page-download" class="book-page-download {%if font %}{{font}}{% endif %}">
+        {% if copyRight %}
+        <div class="content okkk" id = 'okay'>
+            <img class="imgs" src="static/images/front.jpg" alt="" >
+            <div class="overlay-text"><p class="cover-text" style="color: white;">{{bookName}}</p></div>
+            <div class="overlay-text-author"><p class="cover-text" style="color: white;">{{authorName}}</p></div>
+        </div>
+    <div class="text-content">
+    
+    <div class="fixedDivs" id = 'okay2'>
+        <div class="internals">
+        <p class="paragrapgh">{{ copyRight | replace("&#39;", "'")}}</p>
+        </div>
+    </div>   
+    {% endif %}
+    
+    {% if disclaimer %}
+    <div class="fixedDivs" >
+        <div class="internals" >
+            <center><h2>Disclaimer</h2></center>
+            <p class="paragrapgh">{{ disclaimer | replace("&#39;", "'")}}</p>
+        </div> 
+    </div>  
+    {% endif %}
+
+    <script>
+        pages[0] = `<div class="content okkk" id = 'okay'>
+            <img class="imgs" src="static/images/front.jpg" alt="" >
+            <div class="overlay-text"><p class="cover-text" style="color: white;">{{bookName}}</p></div>
+            <div class="overlay-text-author"><p class="cover-text" style="color: white;">{{authorName}}</p></div>
+        </div>
+        <div class="fixedDivs" id = 'okay2'>
+        <div class="internals">
+        <p class="paragrapgh">{{ copyRight | replace("&#39;", "'")}}</p>
+        </div>
+    </div>
+    <div class="fixedDivs">
+        <div class="internals">
+            <center><h2>Disclaimer</h2></center>
+            <p class="paragrapgh">{{ disclaimer | replace("&#39;", "'")}}</p>
+        </div> 
+    </div>`
+    </script>
+    <script>
+        let tocCounter = 0;
+        let dictStr;
+        let dict;
+        let textContent = document.querySelector('.text-content'); 
+        let tocMainDiv = document.createElement('div');
+        tocMainDiv.classList.add('tocMainDiv');      
+        let tocDiv;
+        let count = 1;
+        let tocPageNUmber=1;
+        let Str = ""
+    </script>
+    {% if tableOfContent %}
+        <script>
+            function redefineDiv(){
+            toc1parentDiv = document.createElement('div');
+            toc1parentDiv.classList.add('toc1ParentDiv');
+            tocDiv = document.createElement('div');
+            tocDiv.classList.add('tocfixedDivsMain');
+            tocDiv.id = `${count}`
+            }
+        </script>
+        {% for chapter_dict in tableOfContent["Chapters"] %}
+        <script>
+
+            if (`{{ loop.index }}`==1){
+                redefineDiv();
+                center = document.createElement('center');
+                h2 = document.createElement('h2');
+                h2.innerText = `Table of Contents`;
+                center.appendChild(h2);
+                tocDiv.appendChild(center);
+            }
+            dictStr = `{{chapter_dict}}`.replace(/&#39;/g, '"');
+            dictStr = dictStr.replace(/&#34;/g, '"');
+            dictStr = dictStr.replace(/"s/g, "'");
+            dictStr = dictStr.replace(/" /g, "' ");
+
+            console.log(dictStr)
+            dict = JSON.parse(dictStr);
+            console.log(dict);
+            
+            // li = document.createElement('li');
+            h3 = document.createElement('h3');
+            h3.innerText = dict[`Chapter{{ loop.index }}`].replace(/&#39;/g, "'");
+            // li.appendChild(h3)
+            tocDiv.appendChild(h3);
+            tocCounter+=1;
+            if (tocCounter%37==0){
+                redefineDiv();
+                toc1parentDiv.appendChild(tocDiv);
+                tocMainDiv.appendChild(toc1parentDiv);
+            }
+            console.log("dict: ",Object.keys(dict)[1]);
+            for (let i=0; i<dict[Object.keys(dict)[1]].length; i++){
+                lii = document.createElement('div');
+                lii.classList.add("tocSubheadings");
+                lii.classList.add("one");
+                // lengthOfStr = `${dict[`Subheadings`][i]}`.length;
+                // let Str = "-".repeat(110-lengthOfStr);
+                // console.log(`Str: ${Str}`);
+                lii.innerText = `${dict[Object.keys(dict)[1]][i]}`.replace(/&#39;/g, "'");
+                // console.log(`see what it is: ${dict[Object.keys(dict)[1]][i]}`)
+                span = document.createElement('span');
+                span.classList.add("tocPageNumber");
+                span.classList.add("one");
+                if (count%2==0){
+                    span.innerText = tocPageNUmber;
+                    tocPageNUmber+=1;
+                }
+                else{
+                    span.innerText = tocPageNUmber;
+                }
+                // lii.appendChild(span);
+                tocLine = document.createElement('div');
+                tocLine.classList.add("tocLine");
+
+                tocLine.appendChild(lii);
+                tocLine.appendChild(span);
+                tocDiv.appendChild(tocLine);
+                tocCounter+=1;
+                if (tocCounter%37==0){
+                    toc1parentDiv.appendChild(tocDiv);
+                    tocMainDiv.appendChild(toc1parentDiv);
+                    redefineDiv();
+                }
+            count+=1;
+            }
+            toc1parentDiv.appendChild(tocDiv);
+            tocMainDiv.appendChild(toc1parentDiv);
+            
+            
+        </script>
+        {% endfor %}
+        <script>
+            textContent.appendChild(tocMainDiv);
+        </script>
+    {% endif %}
+
+
+{% if prologue %}
+    <div class="fixedDivs">
+        <div class="internals">
+            <center><h2>Preface</h2></center>
+            <p class="paragrapgh">{{ prologue | replace("&#39;", "'")}}</p> 
+        </div>
+    </div>   
+    {% endif %}
+
+{% if forword %}
+    <div class="fixedDivs">
+        <div class="internals">
+            <center><h2>Foreword</h2></center>
+            <p class="paragrapgh">{{ forword | replace("&#39;", "'")}}</p>
+        </div>
+    </div>   
+    {% endif %}
+    {% if book %}
+    <script>
+        let counter = 0;
+        let pararaphList;
+        let text;
+        let center;
+        let list;
+        let paragrapgh;
+        let pageSide = 0;
+        AllChapterDiv = document.createElement('div');
+        AllChapterDiv.classList.add('AllChapterDiv');
+    </script>
+    {% for chapter_dict in book %}
+        <script>
+            if ( `{{chapter_dict['Chapter']}}` ){
+                counter = 0;
+                fixedDivs = document.createElement('div');
+                fixedDivs.classList.add('fixedDivsMain');
+                ChapterDiv = document.createElement('div');
+                ChapterDiv.classList.add('ChapterDiv');
+                center = document.createElement('center');
+                h2 = document.createElement('h2');
+                h2.innerText = `{{chapter_dict['Chapter']}}`.replace(/&#39;/g, "'");
+                center.appendChild(h2);
+                pageTitle = document.createElement('div');
+                pageTitle.classList.add('page-title');
+                center2 = document.createElement('center');
+                if (pageSide%2==0){
+                    center2.innerText = `{{bookName}}`;
+                    pageSide+=1;
+                }
+                else{
+                    center2.innerText=`{{authorName}}`;
+                    pageSide+=1;
+                }
+                pageTitle.appendChild(center2);
+                fixedDivs.appendChild(pageTitle);
+                fixedDivs.appendChild(center);
+                // pageTitle = document.createElement('div');
+                // pageTitle.classList.add('page-title');
+                // center = document.createElement('center');
+                // center.innerText = "ok"
+                // pageTitle.appendChild(center);
+            }
+            if (counter%2==0 && counter!=0){
+                fixedDivs = document.createElement('div');
+                fixedDivs.classList.add('fixedDivsMain');
+                list = document.createElement('h3');
+                paragrapgh = document.createElement('p');
+                pg = `{{chapter_dict['Content']}}`;
+                pg = pg.split(/\r?\n\r?\n/)
+                for (let i=0; i<pg.length; i++){
+                    p = document.createElement('p');
+                    p.innerText = pg[i].replace(/&#39;/g, "'");
+                    p.style.textIndent = '5%';
+                    paragrapgh.appendChild(p);
+                }
+                // paragrapgh.innerText = pg.replace(/&#39;/g, "'");
+                // paragrapgh.style.textIndent = '5%';
+                paragrapgh.classList.add('paragrapgh');
+                list.innerText = `{{chapter_dict['Subheading']}}`.replace(/&#39;/g, "'");
+                list.style.padding = '2%';
+                pageTitle = document.createElement('div');
+                pageTitle.classList.add('page-title');
+                center = document.createElement('center');
+                if (pageSide%2==0){
+                    center.innerText = `{{bookName}}`.replace(/&#39;/g, "'");
+                    pageSide+=1;
+                }
+                else{
+                    center.innerText=`{{authorName}}`.replace(/&#39;/g, "'");
+                    pageSide+=1;
+                }
+                pageTitle.appendChild(center);
+                fixedDivs.appendChild(pageTitle);
+                fixedDivs.appendChild(list);
+                fixedDivs.appendChild(paragrapgh);
+                pageNumber = document.createElement('div');
+                pageNumber.classList.add('page-num');
+                center = document.createElement('center');
+                center.innerText = pageSide;
+                pageNumber.appendChild(center);
+                fixedDivs.appendChild(pageNumber);
+                ChapterDiv.appendChild(fixedDivs);
+                counter+=1;
+            }
+            else{
+            list = document.createElement('h3');
+            paragrapgh = document.createElement('p');
+            list.innerText = `{{chapter_dict['Subheading']}}`.replace(/&#39;/g, "'");
+            list.style.padding = '2%';
+            pg = `{{chapter_dict['Content']}}`;
+            pg = pg.split(/\r?\n\r?\n/);
+            // console.log(pg);
+            for (let i=0; i<pg.length; i++){
+                    p = document.createElement('p');
+                    p.innerText = pg[i].replace(/&#39;/g, "'");
+                    p.style.textIndent = '5%';
+                    paragrapgh.appendChild(p);
+                }
+            // paragrapgh.innerText = pg.replace(/&#39;/g, "'");
+            // paragrapgh.style.textIndent = '5%';
+            paragrapgh.classList.add('paragrapgh');
+            fixedDivs.appendChild(list);
+            fixedDivs.appendChild(paragrapgh);
+            pageNumber = document.createElement('div');
+            pageNumber.classList.add('page-num');
+            center = document.createElement('center');
+            center.innerText = pageSide;
+            pageNumber.appendChild(center);
+            fixedDivs.appendChild(pageNumber);
+            
+            // textContent.appendChild(pageTitle);
+            ChapterDiv.appendChild(fixedDivs);
+            counter+=1;
+            }
+            if ( `{{chapter_dict['Chapter']}}` ){
+                AllChapterDiv.appendChild(ChapterDiv);
+            }
+            
+        </script>
+    {% endfor %}
+        <script>
+            textContent.appendChild(AllChapterDiv);
+        </script>
+    {% endif %}
+
+    <!-- {% if book %}
+        <div class="internals check-height">
+        <div id="paragraph-content-list">
+        <script>
+            let counter = 1;
+            let pararaphList;
+        </script>
+{% for chapter_dict in book %}
+    {% if chapter_dict['Chapter'] %}
+    <script>
+        counter=1;
+    </script>
+        <div id="break"></div>
+        <center><h2>{{chapter_dict['Chapter']}}</h2></center>
+    {% endif %}
+    <li class="subheadings">{{ chapter_dict['Subheading']}}</li>
+    <ul id="paragraph-list" class="paragrapgh">{{ chapter_dict['Content']}}</ul>
+    <script>
+        
+        if (counter%2 == 0){
+            let breakDiv = document.createElement('div');
+            breakDiv.id = 'break';
+            pararaphList = document.querySelector('#paragraph-content-list');
+            pararaphList.appendChild(breakDiv);
+        }
+        counter+=1;
+
+    </script>
+    
+{% endfor %}
+    </div>
+        {% endif %}
+        </div>
+<div id="break"></div> -->
+
+ 
+<!-- 
+{% if content %}
+
+{% endif  %} -->
+
+
+    {% if epilogue %}
+    <div class="fixedDivs">
+        <div class="internals">
+        <center><h2>Epilogue</h2></center>
+        <p class="paragrapgh">{{ epilogue | replace("&#39;", "'")}}</p>
+        </div>
+    </div>    
+    {% endif %}
+</div>
+
+{% if tableOfContent %}
+<div class="content backookk">
+    <img class="imgs" src="static/images/back.jpg" alt="">
+    <div class="back-overlay-text"><p class="back-cover-text">{{backcover | replace("&#39;", "'")}}</p></div>
+</div>
+{% endif %}
+
+    </div>
+</div>
+</div>
+    <script>
+        window.onload = function() {
+    console.log("achaaa");
+    
+    // Get the elements with the class 'tocMainDiv'
+            const tocDynamicDivs = document.getElementsByClassName('toc1ParentDiv');
+            
+            // Check if there are any elements with the class 'tocMainDiv'
+            if (tocDynamicDivs.length > 0) {
+                // Loop through the elements and store their HTML content in the pages array
+                for (let i = 0; i < tocDynamicDivs.length; i++) {
+                    // Ensure pages array is defined
+                    if (typeof pages === 'undefined') {
+                        pages = [];
+                    }
+                    pages.push(tocDynamicDivs[i].innerHTML);
+                    // console.log(`pages[${i + 1}] = ${pages[i + 1]}`);
+                }
+            } else {
+                console.log('No elements found with the class "tocMainDiv".');
+            }
+
+            pages.push(`<div class="fixedDivs">
+        <div class="internals">
+            <center><h2>Preface</h2></center>
+            <p class="paragrapgh">{{ prologue | replace("&#39;", "'")}}</p> 
+        </div>
+    </div>
+    <div class="fixedDivs">
+        <div class="internals">
+            <center><h2>Foreword</h2></center>
+            <p class="paragrapgh">{{ forword | replace("&#39;", "'")}}</p>
+        </div>
+    </div>  `)
+
+
+            // const contentDynamicDivs = document.getElementsByClassName('AllChapterDiv');
+            const chapters = document.getElementsByClassName('ChapterDiv');
+            // console.log(`length${chapters.length}`)
+            // console.log(`chap = ${contentDynamicDivs[0].innerHTML}`);
+            if (chapters.length > 0) {
+                // Loop through the elements and store their HTML content in the pages array
+                for (let i = 0; i < chapters.length; i++) {
+                    // Ensure pages array is defined
+                    if (typeof pages === 'undefined') {
+                        pages = [];
+                    }
+                    pages.push(chapters[i].innerHTML);
+                    console.log(`chap[${i + 1}] = ${chapters[i].innerHTML}`);
+                }
+            } else {
+                console.log('No elements found with the class "tocMainDiv".');
+            }
+
+            pages.push(`<div class="fixedDivs">
+        <div class="internals">
+        <center><h2>Epilogue</h2></center>
+        <p class="paragrapgh">{{ epilogue | replace("&#39;", "'")}}</p>
+        </div>
+    </div>
+    <div class="content backookk">
+    <img class="imgs" src="static/images/back.jpg" alt="">
+    <div class="back-overlay-text"><p class="back-cover-text">{{backcover | replace("&#39;", "'")}}</p></div>
+</div>`)
+
+
+
+        };
+
+
+        const button = document.getElementById('downloadBtn');
+
+        function generatePDF() {
+            
+            // var element = document.getElementById('okay');
+            // elementHeight = element.offsetHeight;
+            // height = elementHeight
+            // var opt = {
+            // margin:       [0,0,0,0],
+            // filename:     'myfile.pdf',
+            // image:        { type: 'jpeg', quality: 1 },
+            // html2canvas:  { scale: 1, height: height},
+            // jsPDF:        { unit: 'px', format: 'letter', orientation: 'portrait',hotfixes: ["px_scaling"]},
+            // // pagebreak: {  mode: "css", after: "#break" }
+            // };
+            // // New Promise-based usage:
+            // html2pdf().set(opt,).from(element).save();
+
+
+    // Generate the PDF.
+        let fileName = `{{bookName}}`;
+
+        // front page ---- copyright page - disclaimer page
+        
+        let worker = html2pdf().from(pages[0]).set({
+            margin: 0,
+            filename: fileName,
+            image:        { type: 'jpeg', quality: 0.8 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'px', format: 'letter', orientation: 'portrait', hotfixes: ["px_scaling"] }
+        }).toPdf();
+
+        pages = Array.from(pages).slice(1); // Convert NodeList to Array and remove the first page (already processed)
+        
+        pages.forEach(function (page) {
+            worker = worker.get('pdf').then(function (pdf) {
+                pdf.addPage();
+            }).from(page).toContainer().toCanvas().toPdf();
+        });
+        
+        worker.save();
+            }
+            // Old monolithic-style usage:
+            // html2pdf(element, opt);
+
+            
+            
+    </script>
+    <script>
+        var buttonn = document.getElementsByClassName("bttn");
+        buttonn.addEventListener("click", function () {
+            var doc = new jsPDF();
+            var pdf = document.querySelector("#book-page-downloadd");
+            doc.fromHTML(pdf);
+            doc.save("GFG.pdf");
+        });
+    </script>
+    <!-- <script>
+        function demoFromHTML() {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    // source can be HTML-formatted string, or a reference
+    // to an actual DOM element from which the text will be scraped.
+    source = $('#book-page-download')[0];
+
+    // we support special element handlers. Register them with jQuery-style 
+    // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+    // There is no support for any other type of selectors 
+    // (class, of compound) at this time.
+    specialElementHandlers = {
+        // element with id of "bypass" - jQuery style selector
+        '#bypassme': function (element, renderer) {
+            // true = "handled elsewhere, bypass text extraction"
+            return true
+        }
+    };
+    margins = {
+        top: 80,
+        bottom: 60,
+        left: 40,
+        width: 522
+    };
+    // all coords and widths are in jsPDF instance's declared units
+    // 'inches' in this case
+    pdf.fromHTML(
+        source, // HTML string or DOM elem ref.
+        margins.left, // x coord
+        margins.top, { // y coord
+            'width': margins.width, // max width of content on PDF
+            'elementHandlers': specialElementHandlers
+        },
+
+        function (dispose) {
+            // dispose: object with X, Y of the last line add to the PDF 
+            //          this allow the insertion of new lines after html
+            pdf.save('Test.pdf');
+        }, margins
+    );
+}
+
+    </script> -->
+</body>
+</html>

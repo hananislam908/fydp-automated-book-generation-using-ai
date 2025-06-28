@@ -1,0 +1,353 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;;
+  /* font-family: "Libre Baskerville", serif; */
+}
+
+.Roboto{
+  font-family:"Roboto", sans-serif;
+}
+.OpenSans{
+  font-family: "Open Sans", sans-serif;
+}
+.Lato{
+  font-family: "Lato", sans-serif;
+}
+.Slabo27px{
+  font-family: "Slabo 27px", sans-serif;
+}
+.PoetsenOne{
+  font-family: "Poetsen One", sans-serif;
+}
+.mainDiv{
+  display: flex;
+  height: 100vh;
+}
+.input-div{
+  /* border-right: 2px black solid; */
+  background-color:#C5001A;
+  height: 100%;
+  border-right: 5px solid #002C54;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); */
+
+  flex: 0 0 30%;
+  overflow: hidden;
+}
+.book-page{
+    height: auto;
+    flex: 0 0 70%; /* Fixed width of 70% */
+    overflow-y: auto;
+}
+#book-page-download{
+  
+  width: 100%;
+  height: auto;
+  
+}
+.content{
+    width: 100%;
+    height: 279.4mm;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border-bottom: 2px solid black;
+
+}
+.text-content{
+    width: 100%;
+    height: auto;
+    
+}
+
+.imgs{
+  height: 100%;
+  width: 100%;
+  padding: 10% 10% 30% 10%;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 20%;
+  /* left: 50%; */
+  width: 80%; 
+  height: 10%;
+  /* transform: translate(-50%, -50%);  */
+  background-color:rgba(0, 0, 0, 0.2);
+  padding: 10px 20px; 
+  font-size: 36px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% 10% 30% 10%;
+}
+.overlay-text-author {
+  position: absolute;
+  top: 55%;
+  /* left: 50%; */
+  width: 80%; 
+  height: 5%;
+  /* transform: translate(-50%, -50%);  */
+  background-color:rgba(0, 0, 0, 0.2);;
+  padding: 10px 20px; 
+  font-size: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% 10% 30% 10%;
+}
+.back-overlay-text {
+  position:absolute;
+  top: 1%;
+  width: 80%; 
+  height: 66%;
+  /* transform: translate(-50%, 0%);  */
+  margin: 10% 10% 30% 10%;
+}
+.cover-text{
+  text-align: center;
+  color: white;
+
+}
+.back-cover-text{
+  color: black;
+  text-align:
+  justify;
+  margin: 5%;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+li{
+  width: 100%;
+  height: auto;
+}
+.fixedDivs{
+  height: 279.4mm;
+  background-color: white;
+  overflow-y: hidden;
+  padding: 9.09% 8.8% 0 8.8%;
+  /* border-bottom: 2px black solid; */
+  /* box-shadow: inset 5px 0px -5px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.fixedDivsMain{
+  height: 279.4mm;
+  background-color:white;
+  overflow-y: hidden;
+  padding: 0 8.8% 0 8.8%;
+  position: relative;
+  /* border-bottom: 2px black solid; */
+  /* box-shadow: inset 0 0 0 #000000; */
+}
+.page-title{
+  height: 9.09%;
+  align-content: center;
+}
+.page-num{
+  padding: 1%;
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Move left to center */
+  transform: translateX(-50%);
+}
+.tocfixedDivsMain{
+  height: 279.4mm;
+  background-color:white;
+  overflow-y: hidden;
+  padding: 9.09% 8.8% 0 8.8%;
+  /* border-bottom: 2px black solid; */
+  /* box-shadow: inset 0 0 0 #000000; */
+}
+.tocSubheadings{
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 95%;
+  /* Style the text */
+}
+.tocSubheadings::after {
+  content: "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"; /* Display the ellipsis */
+  color: gray; /* Set the color of the dots */
+  font-size: 14px;
+  overflow: hidden; /* Adjust the size of the dots */
+}
+.tocPageNumber{
+  width: 5%;
+
+}
+.tocLine{
+  width: 100%;
+  display: flex;
+}
+/* #paragraph-content-list{
+  margin-top: 5%;
+} */
+.internals{
+  margin: 5%;
+  text-align: justify;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: white;
+}
+.fixedDivsMain{
+  text-align: justify;
+}
+h2{
+  margin-bottom: 2%;
+}
+ul {
+  list-style-position: inside;
+  margin-left: 4%; /* Adjust the value as needed */
+  box-sizing: border-box;
+  overflow: auto;
+}
+ol {
+  list-style-position: inside;
+  margin-left: 4%; /* Adjust the value as needed */
+}
+.subheadings{
+  font-size: 20px;
+  margin: 2%;
+}
+.paragrapgh{
+  line-height: 24px;
+  text-align: justify;
+}
+/* .mainDiv{
+  border: 2px red solid;
+  display: flex;
+  height: 100vh;
+}
+.input-div{
+  background-color: antiquewhite;
+}
+.book-page{
+  background-color: black;
+} */
+
+.heading-intro{
+  padding: 2%;
+  background-color: #002C54;
+  color: #C5001A;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="number"] {
+    width: 96%;
+    padding: 10px;
+    border: 2px solid #C5001A;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 2%;
+    background-color: #002C54;
+    color: #C5001A;
+}
+input::placeholder{
+  color: #C5001A;
+}
+.option {
+  color: #C5001A; /* Change 'red' to the desired color */
+}
+
+
+
+
+
+
+
+
+
+
+.custom-select {
+  width: 96%; /* Adjust width as needed */
+  padding: 10px;
+  border: 2px solid #C5001A;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #002C54;
+  color: #C5001A;
+  margin: 2%;
+  cursor: pointer; /* Indicate interactivity */
+  appearance: none; /* Remove default styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+
+
+/* CSS */
+.button-19 {
+  appearance: button;
+  background-color: white;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #C5001A;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 95%;
+  margin: 2%;
+  /* align-content: center; */
+  justify-content: center;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #002C54;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}
